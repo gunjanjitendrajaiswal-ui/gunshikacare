@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'kashikateam@gmail.com' ||
+        request.auth.uid == 'Zxp6G1tpRHRPRKpkv31NdIMEnUu2'
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // User profile validation
+    function isValidUser(data) {
+      return data.id is string &&
+        data.id.size() <= 128 &&
+        data.fullName is string &&
+        data.fullName.size() > 0 &&
+        data.fullName.size() <= 100 &&
+        data.email is string &&
+        data.email.size() <= 120;
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if (isOwner(userId) && 
+        isValidId(userId) && 
+        request.resource.data.id == userId && 
+        isValidUser(request.resource.data)) || isAdmin();
+      allow update: if (isOwner(userId) && 
+        isValidId(userId) && 
+        request.resource.data.id == userId && 
+        isValidUser(request.resource.data)) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Appointment validation
+    function isValidAppointment(data) {
+      return data.id is string &&
+        data.id.size() <= 128 &&
+        data.bookingReference is string &&
+        data.bookingReference.size() <= 32 &&
+        data.patientName is string &&
+        data.patientName.size() <= 100 &&
+        data.patientPhone is string &&
+        data.patientPhone.size() <= 30 &&
+        data.doctorId is string &&
+        data.doctorId.size() <= 64 &&
+        data.date is string &&
+        data.timeSlot is string &&
+        data.status in ['confirmed', 'cancelled', 'completed'];
+    }
+
+    match /appointments/{appointmentId} {
+      allow get: if (isSignedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+      allow list: if (isSignedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+      allow create: if (isSignedIn() && 
+        isValidId(appointmentId) && 
+        request.resource.data.userId == request.auth.uid && 
+        isValidAppointment(request.resource.data)) || (isAdmin() && isValidId(appointmentId) && isValidAppointment(request.resource.data));
+      allow update: if (isSignedIn() && 
+        isValidId(appointmentId) && 
+        resource.data.userId == request.auth.uid && 
+        request.resource.data.userId == request.auth.uid && 
+        isValidAppointment(request.resource.data)) || (isAdmin() && isValidId(appointmentId) && isValidAppointment(request.resource.data));
+      allow delete: if (isSignedIn() && 
+        isValidId(appointmentId) && 
+        resource.data.userId == request.auth.uid) || isAdmin();
+    }
+  }
+}

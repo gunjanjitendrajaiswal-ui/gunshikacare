@@ -1,0 +1,598 @@
+import { Department, Doctor } from '../types';
+
+export const DEPARTMENTS: Department[] = [
+  {
+    id: 'cardiology',
+    name: 'Cardiology & Heart Center',
+    shortDescription: 'Comprehensive cardiac care from preventive screening to complex robotic bypass surgeries and transcatheter interventions.',
+    fullDescription: 'The Gunshika Care Heart Center is recognized for clinical excellence in cardiovascular care. Equipped with dual 24/7 Digital Flat-Panel Cath Labs, dedicated cardiac intensive care units (CICU), and an advanced robotic cardiac surgery suite, we deliver rapid emergency angioplasty and high-precision heart repairs.',
+    icon: 'HeartPulse',
+    color: 'rose',
+    stats: '15,000+ Heart Procedures',
+    headOfDepartment: 'Dr. Evelyn Martinez, MD, FACC',
+    keyProcedures: [
+      'Primary Angioplasty & Stenting (24/7 Door-to-Balloon < 50 min)',
+      'Minimally Invasive Coronary Artery Bypass (CABG)',
+      'Transcatheter Aortic Valve Replacement (TAVR)',
+      'Electrophysiology Study & 3D Arrhythmia Ablation',
+      'Advanced Heart Failure & Pacemaker / ICD Implantation'
+    ],
+    commonConditions: ['Coronary Artery Disease', 'Heart Failure', 'Arrhythmia & Atrial Fibrillation', 'Hypertension', 'Valvular Heart Disorders'],
+    imageUrl: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'neurology',
+    name: 'Neurology & Neurosurgery',
+    shortDescription: 'Pioneering treatment for brain, spine, and nerve disorders with intraoperative neuro-navigation and comprehensive stroke care.',
+    fullDescription: 'Our Brain & Spine Institute integrates certified Comprehensive Stroke Centers with microscopic neurosurgical theatres. Our multidisciplinary board specializes in neuro-oncology, complex spinal deformities, epilepsy surgery, and Parkinson’s movement therapy.',
+    icon: 'Brain',
+    color: 'indigo',
+    stats: '8,200+ Neuro Surgeries',
+    headOfDepartment: 'Dr. Arthur Sterling, MD, FRCS (Neuro)',
+    keyProcedures: [
+      'Intraoperative 3D Neuro-Navigation Brain Tumor Resection',
+      'Endovascular Coiling for Cerebral Aneurysms & AVMs',
+      'Minimally Invasive Microdiscectomy & Spinal Fusion',
+      'Deep Brain Stimulation (DBS) for Parkinson’s',
+      'Acute Ischemic Stroke Mechanical Thrombectomy'
+    ],
+    commonConditions: ['Stroke / Brain Attack', 'Epilepsy & Seizures', 'Brain & Spinal Cord Tumors', 'Migraines & Neuropathic Pain', 'Multiple Sclerosis & Parkinson’s'],
+    imageUrl: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'orthopedics',
+    name: 'Orthopedics & Joint Replacement',
+    shortDescription: 'Advanced robotic knee and hip replacements, arthroscopic sports medicine, and complex orthopedic trauma reconstruction.',
+    fullDescription: 'Gunshika Care Orthopedics Center utilizes computer-assisted Mako robotic joint replacement systems for sub-millimeter precision. We restore painless mobility with rapid-recovery rehabilitation protocols and elite sports injury arthroscopy.',
+    icon: 'Bone',
+    color: 'amber',
+    stats: '12,400+ Joint Surgeries',
+    headOfDepartment: 'Dr. Marcus Vance, MS (Ortho), MCh',
+    keyProcedures: [
+      'Mako Robotic Total & Partial Knee Arthroplasty',
+      'Direct Anterior Hip Replacement with Swift Ambulation',
+      'Arthroscopic ACL / Meniscus / Rotator Cuff Repair',
+      'Deformity Correction & Complex Pelvic Fracture Care',
+      'Pediatric Orthopedics & Scoliosis Correction'
+    ],
+    commonConditions: ['Osteoarthritis & Knee Pain', 'Sports Ligament Tears', 'Hip Dysplasia & Degeneration', 'Spinal Disc Herniations', 'Complex Fractures'],
+    imageUrl: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'pediatrics',
+    name: 'Pediatrics & Neonatology',
+    shortDescription: 'Gentle, world-class healthcare for newborns, infants, children, and adolescents with a specialized Level III NICU.',
+    fullDescription: 'Our Child Health Pavilion is designed to eliminate fear for young patients while delivering advanced pediatric intensive care (PICU) and Level III neonatal intensive care (NICU) with 24/7 dedicated neonatologists.',
+    icon: 'Baby',
+    color: 'sky',
+    stats: '25,000+ Happy Children',
+    headOfDepartment: 'Dr. Sarah Jenkins, MD (Pediatrics), FAAP',
+    keyProcedures: [
+      'Level III Neonatal Intensive Care & Extreme Preterm Care',
+      'Pediatric Cardiology & Congenital Heart Screening',
+      'Childhood Immunization & Developmental Milestones Clinic',
+      'Pediatric Emergency & Allergy Management',
+      'Pediatric Laparoscopic & General Surgery'
+    ],
+    commonConditions: ['Neonatal Jaundice & Prematurity', 'Childhood Asthma & Bronchiolitis', 'Pediatric Infections & Fevers', 'Growth & Nutritional Delays', 'Congenital Anomalies'],
+    imageUrl: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'oncology',
+    name: 'Oncology & Cancer Care',
+    shortDescription: 'Compassionate precision cancer care combining immunotherapy, targeted chemotherapy, and image-guided robotic tumor surgery.',
+    fullDescription: 'Our Comprehensive Cancer Center features tumor board reviews for individualized protocols. We deploy TrueBeam linear accelerators for targeted stereotactic radiation, alongside dedicated bone marrow transplant suites and soothing infusion daycare.',
+    icon: 'ShieldAlert',
+    color: 'emerald',
+    stats: '94% Treatment Success',
+    headOfDepartment: 'Dr. Devika Rao, MD, DM (Medical Oncology)',
+    keyProcedures: [
+      'Targeted Chemotherapy & Next-Gen Immunotherapy',
+      'Image-Guided Stereotactic Body Radiation (SBRT / SRS)',
+      'Organ-Preserving Robotic Surgical Oncology',
+      'Comprehensive Breast & Gynecologic Cancer Center',
+      'Pain Management, Palliative & Nutritional Support'
+    ],
+    commonConditions: ['Breast Cancer', 'Lung & Thoracic Cancers', 'Gastrointestinal & Colorectal Cancers', 'Blood Cancers & Lymphomas', 'Prostate & Bladder Tumors'],
+    imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'gastroenterology',
+    name: 'Gastroenterology & Hepatology',
+    shortDescription: 'Advanced digestive, liver, and pancreatic care utilizing high-definition endoscopic ultrasound and therapeutic endoscopy.',
+    fullDescription: 'The Digestive Diseases Institute provides end-to-end diagnosis and therapeutic interventions for gastrointestinal, liver, and biliary disorders, backed by specialized liver ICU and metabolic liver clinics.',
+    icon: 'Stethoscope',
+    color: 'teal',
+    stats: '18,000+ Endoscopies',
+    headOfDepartment: 'Dr. Rajesh Nair, MD, DM (Gastro)',
+    keyProcedures: [
+      'Diagnostic & Therapeutic Upper GI Endoscopy & Colonoscopy',
+      'Endoscopic Retrograde Cholangiopancreatography (ERCP)',
+      'Endoscopic Ultrasound (EUS) & Fine Needle Biopsy',
+      'FibroScan Liver Stiffness & Fatty Liver Assessment',
+      'Management of Complex Inflammatory Bowel Disease (IBD)'
+    ],
+    commonConditions: ['GERD & Acid Reflux', 'Liver Cirrhosis & Hepatitis', 'Irritable Bowel Syndrome & Colitis', 'Gallstones & Bile Duct Blockage', 'Peptic Ulcers & GI Bleeding'],
+    imageUrl: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'gynecology',
+    name: 'Obstetrics & Gynecology',
+    shortDescription: 'Dedicated women’s healthcare spanning high-risk pregnancy, pain-free birthing suites, and robotic gynecological surgeries.',
+    fullDescription: 'Gunshika Care Women’s Pavilion provides a caring, state-of-the-art sanctuary for women at every life milestone. From preconception counseling and luxury LDRP (Labor, Delivery, Recovery, Postpartum) suites to minimally invasive laparoscopic surgery.',
+    icon: 'Heart',
+    color: 'pink',
+    stats: '14,000+ Safe Deliveries',
+    headOfDepartment: 'Dr. Clara Thorne, MD, FACOG',
+    keyProcedures: [
+      'High-Risk Pregnancy & Fetal Medicine Center',
+      'LDRP Birthing Suites with Painless Water Birth Options',
+      'Laparoscopic & Hysteroscopic Fibroid / Cyst Excision',
+      'Polycystic Ovarian Syndrome (PCOS) & Menopause Clinic',
+      'Urogynecology & Pelvic Floor Reconstruction'
+    ],
+    commonConditions: ['High-Risk Pregnancy', 'Uterine Fibroids & Endometriosis', 'PCOS & Hormonal Imbalances', 'Menstrual Disorders', 'Infertility Evaluation'],
+    imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'pulmonology',
+    name: 'Pulmonology & Respiratory Care',
+    shortDescription: 'Comprehensive pulmonary care for asthma, COPD, sleep apnea, and complex interstitial lung diseases with full pulmonary function lab.',
+    fullDescription: 'The Gunshika Care Respiratory Institute combines modern diagnostic bronchoscopy, dedicated pulmonary rehabilitation, and advanced mechanical ventilation expertise to restore respiratory strength and vitality.',
+    icon: 'Activity',
+    color: 'cyan',
+    stats: '22,000+ Lungs Healed',
+    headOfDepartment: 'Dr. Julian Bennett, MD, FCCP',
+    keyProcedures: [
+      'Advanced Diagnostic & Therapeutic Bronchoscopy (EBUS)',
+      'Comprehensive Pulmonary Function Testing (PFT & DLCO)',
+      'Polysomnography (Sleep Study Lab) for Sleep Apnea',
+      'Post-COVID & Chronic Lung Disease Rehabilitation',
+      'Allergy Testing & Biological Asthma Therapies'
+    ],
+    commonConditions: ['Severe Asthma & Allergies', 'Chronic Obstructive Pulmonary Disease (COPD)', 'Obstructive Sleep Apnea', 'Pneumonia & Pleural Effusion', 'Pulmonary Fibrosis'],
+    imageUrl: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80'
+  }
+];
+
+export const DOCTORS: Doctor[] = [
+  // Cardiology Doctors
+  {
+    id: 'doc-cardio-1',
+    name: 'Dr. Evelyn Martinez',
+    title: 'Chief Interventional Cardiologist & Director',
+    departmentId: 'cardiology',
+    departmentName: 'Cardiology & Heart Center',
+    qualification: 'MD, DM (Cardiology), FACC (USA)',
+    experienceYears: 19,
+    rating: 4.9,
+    reviewsCount: 342,
+    consultationFee: 120,
+    languages: ['English', 'Spanish'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    availableTimeSlots: ['09:00 AM', '10:00 AM', '11:30 AM', '02:00 PM', '03:30 PM', '05:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Evelyn Martinez is an internationally recognized interventional cardiologist with over 7,000 successful transcatheter and angioplasty interventions. Former fellow at Cleveland Clinic, she leads our transcatheter heart valve program.',
+    roomNumber: 'Suite 201 - Heart Wing',
+    specializationAreas: ['Coronary Angioplasty', 'TAVR Procedures', 'Complex Bifurcation Stenting', 'Preventive Cardiology']
+  },
+  {
+    id: 'doc-cardio-2',
+    name: 'Dr. Thomas Lin',
+    title: 'Senior Cardiac Electrophysiologist',
+    departmentId: 'cardiology',
+    departmentName: 'Cardiology & Heart Center',
+    qualification: 'MBBS, MD, Fellowship in Electrophysiology (Johns Hopkins)',
+    experienceYears: 14,
+    rating: 4.8,
+    reviewsCount: 215,
+    consultationFee: 110,
+    languages: ['English', 'Mandarin'],
+    availableDays: ['Mon', 'Wed', 'Thu', 'Sat'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '01:30 PM', '03:00 PM', '04:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80',
+    bio: 'Specializing in heart rhythm disorders and syncopal attacks, Dr. Lin excels in radiofrequency catheter ablation, cryo-ablation, and leadless pacemaker implants.',
+    roomNumber: 'Suite 204 - Heart Wing',
+    specializationAreas: ['Arrhythmia Ablation', 'Pacemakers & ICDs', 'Atrial Fibrillation', 'Holter Diagnostics']
+  },
+  {
+    id: 'doc-cardio-3',
+    name: 'Dr. Amanda Foster',
+    title: 'Consultant Cardiothoracic Surgeon',
+    departmentId: 'cardiology',
+    departmentName: 'Cardiology & Heart Center',
+    qualification: 'MS, MCh (Cardiothoracic & Vascular Surgery), FACS',
+    experienceYears: 16,
+    rating: 4.9,
+    reviewsCount: 188,
+    consultationFee: 130,
+    languages: ['English'],
+    availableDays: ['Tue', 'Wed', 'Fri'],
+    availableTimeSlots: ['10:00 AM', '11:30 AM', '02:30 PM', '04:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1594824813571-638f02614d3f?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Foster is renowned for beating-heart bypass surgeries and minimally invasive valve reconstruction. She has published over 30 papers on arterial grafting techniques.',
+    roomNumber: 'Suite 208 - Heart Wing',
+    specializationAreas: ['Off-Pump CABG', 'Mitral Valve Repair', 'Aortic Aneurysm Surgery', 'Robotic Cardiac Surgery']
+  },
+
+  // Neurology Doctors
+  {
+    id: 'doc-neuro-1',
+    name: 'Dr. Arthur Sterling',
+    title: 'Chair of Neurosurgery & Spine Institute',
+    departmentId: 'neurology',
+    departmentName: 'Neurology & Neurosurgery',
+    qualification: 'MD, FRCS (Neurosurgery), FAANS',
+    experienceYears: 22,
+    rating: 4.9,
+    reviewsCount: 410,
+    consultationFee: 140,
+    languages: ['English', 'German'],
+    availableDays: ['Mon', 'Tue', 'Thu', 'Fri'],
+    availableTimeSlots: ['09:00 AM', '10:30 AM', '02:00 PM', '03:30 PM', '05:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Sterling has pioneered minimally invasive skull-base neurosurgery and computer-guided spinal reconstruction. He trained at Oxford Radcliffe Hospital and Harvard Medical.',
+    roomNumber: 'Tower B, 4th Floor, Suite 402',
+    specializationAreas: ['Brain Tumors', 'Minimally Invasive Spine Surgery', 'Trigeminal Neuralgia', 'Microvascular Decompression']
+  },
+  {
+    id: 'doc-neuro-2',
+    name: 'Dr. Priya Sen',
+    title: 'Senior Stroke Neurologist & Neuro-Critical Specialist',
+    departmentId: 'neurology',
+    departmentName: 'Neurology & Neurosurgery',
+    qualification: 'MBBS, MD (Medicine), DM (Neurology)',
+    experienceYears: 12,
+    rating: 4.8,
+    reviewsCount: 195,
+    consultationFee: 100,
+    languages: ['English', 'Hindi', 'Bengali'],
+    availableDays: ['Mon', 'Wed', 'Fri', 'Sat'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '01:00 PM', '03:00 PM', '04:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Sen directs our Hyperacute Stroke Unit. She specializes in neurological rehabilitation, migraine management protocols, and multiple sclerosis immunotherapy.',
+    roomNumber: 'Tower B, 4th Floor, Suite 406',
+    specializationAreas: ['Acute Stroke Thrombolysis', 'Headache & Migraine', 'Epilepsy Management', 'Neuropathy']
+  },
+  {
+    id: 'doc-neuro-3',
+    name: 'Dr. Michael Chang',
+    title: 'Consultant Neuro-Interventional Radiologist',
+    departmentId: 'neurology',
+    departmentName: 'Neurology & Neurosurgery',
+    qualification: 'MD, Fellowship in Endovascular Surgical Neuroradiology',
+    experienceYears: 15,
+    rating: 4.9,
+    reviewsCount: 160,
+    consultationFee: 125,
+    languages: ['English', 'Mandarin'],
+    availableDays: ['Tue', 'Thu', 'Fri'],
+    availableTimeSlots: ['10:00 AM', '11:30 AM', '02:00 PM', '03:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80',
+    bio: 'Expert in non-surgical repair of brain vascular malformations. Dr. Chang performs mechanical clot retrieval for strokes and pipeline stent deployment.',
+    roomNumber: 'Tower B, 4th Floor, Suite 410',
+    specializationAreas: ['Aneurysm Coiling', 'Carotid Artery Stenting', 'Spinal Angiography', 'AVM Embolization']
+  },
+
+  // Orthopedics Doctors
+  {
+    id: 'doc-ortho-1',
+    name: 'Dr. Marcus Vance',
+    title: 'Chief Orthopedic Surgeon & Robotic Joint Specialist',
+    departmentId: 'orthopedics',
+    departmentName: 'Orthopedics & Joint Care',
+    qualification: 'MS (Orthopedics), MCh (Ortho, UK), AO Fellow (Switzerland)',
+    experienceYears: 20,
+    rating: 5.0,
+    reviewsCount: 520,
+    consultationFee: 120,
+    languages: ['English'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Sat'],
+    availableTimeSlots: ['09:00 AM', '10:15 AM', '11:30 AM', '02:30 PM', '04:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=500&q=80',
+    bio: 'Having performed over 6,000 joint arthroplasties, Dr. Vance is an authority in robotic-assisted joint replacements allowing patients to walk within hours after surgery.',
+    roomNumber: 'Ground Floor, Bone & Joint Clinic 102',
+    specializationAreas: ['Robotic Knee Replacement', 'Total Hip Arthroplasty', 'Revision Joint Surgery', 'Geriatric Orthopedics']
+  },
+  {
+    id: 'doc-ortho-2',
+    name: 'Dr. Elena Rostova',
+    title: 'Sports Medicine Specialist & Arthroscopic Surgeon',
+    departmentId: 'orthopedics',
+    departmentName: 'Orthopedics & Joint Care',
+    qualification: 'MD, Orthopedic Sports Fellowship (IOC Certified)',
+    experienceYears: 13,
+    rating: 4.8,
+    reviewsCount: 230,
+    consultationFee: 105,
+    languages: ['English', 'Russian'],
+    availableDays: ['Mon', 'Wed', 'Fri'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '02:00 PM', '03:30 PM', '05:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1594824813630-f8f4a66e4a29?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Rostova works with professional athletes for ligament reconstruction, cartilage restoration, and shoulder dislocation repairs using pinhole arthroscopic techniques.',
+    roomNumber: 'Ground Floor, Bone & Joint Clinic 105',
+    specializationAreas: ['ACL / PCL Reconstruction', 'Shoulder Rotator Cuff Repair', 'Ankle Arthroscopy', 'Platelet-Rich Plasma (PRP)']
+  },
+
+  // Pediatrics Doctors
+  {
+    id: 'doc-pedia-1',
+    name: 'Dr. Sarah Jenkins',
+    title: 'Director of Pediatrics & Neonatal Care',
+    departmentId: 'pediatrics',
+    departmentName: 'Pediatrics & Child Care',
+    qualification: 'MD (Pediatrics), FAAP, Fellowship in Neonatology (Boston)',
+    experienceYears: 18,
+    rating: 4.9,
+    reviewsCount: 480,
+    consultationFee: 95,
+    languages: ['English', 'French'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    availableTimeSlots: ['08:30 AM', '10:00 AM', '11:30 AM', '02:00 PM', '03:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Jenkins provides warm, empathetic care for children of all ages. She manages our high-dependency premature infant nursery and directs preventive developmental wellness.',
+    roomNumber: 'Children’s Pavilion, Level 2, Room 212',
+    specializationAreas: ['Neonatal Intensive Care', 'Developmental Pediatrics', 'Vaccinations', 'Pediatric Pulmonology']
+  },
+  {
+    id: 'doc-pedia-2',
+    name: 'Dr. Omar Farooq',
+    title: 'Consultant Pediatrician & Adolescent Health Specialist',
+    departmentId: 'pediatrics',
+    departmentName: 'Pediatrics & Child Care',
+    qualification: 'MBBS, DCH, MRCPCH (London)',
+    experienceYears: 11,
+    rating: 4.8,
+    reviewsCount: 290,
+    consultationFee: 85,
+    languages: ['English', 'Arabic', 'Urdu'],
+    availableDays: ['Mon', 'Tue', 'Thu', 'Sat'],
+    availableTimeSlots: ['09:00 AM', '10:30 AM', '01:30 PM', '03:00 PM', '04:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Farooq is dedicated to infant nutrition, childhood infectious illnesses, pediatric allergies, and supportive behavioral guidance for adolescents.',
+    roomNumber: 'Children’s Pavilion, Level 2, Room 215',
+    specializationAreas: ['Pediatric Asthma', 'Nutritional Counseling', 'Childhood Infections', 'Immunization Protocols']
+  },
+
+  // Oncology Doctors
+  {
+    id: 'doc-onco-1',
+    name: 'Dr. Devika Rao',
+    title: 'Director of Medical Oncology & Stem Cell Therapy',
+    departmentId: 'oncology',
+    departmentName: 'Medical & Surgical Oncology',
+    qualification: 'MD, DM (Medical Oncology), ESMO Certified (Europe)',
+    experienceYears: 17,
+    rating: 4.9,
+    reviewsCount: 310,
+    consultationFee: 130,
+    languages: ['English', 'Hindi'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '02:00 PM', '03:30 PM', '05:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1594824813630-f8f4a66e4a29?auto=format&fit=crop&w=500&q=80',
+    bio: 'A distinguished medical oncologist focusing on precision targeted therapies and next-generation immunotherapy. She tailors cancer treatments based on comprehensive genomic sequencing.',
+    roomNumber: 'Cancer Institute, 3rd Floor, Suite 301',
+    specializationAreas: ['Precision Immunotherapy', 'Breast & Gynecologic Cancer', 'Lung Cancer', 'Molecular Targeted Therapy']
+  },
+  {
+    id: 'doc-onco-2',
+    name: 'Dr. Robert Hayes',
+    title: 'Senior Surgical Oncologist',
+    departmentId: 'oncology',
+    departmentName: 'Medical & Surgical Oncology',
+    qualification: 'MS, MCh (Surgical Oncology), FACS',
+    experienceYears: 19,
+    rating: 4.9,
+    reviewsCount: 275,
+    consultationFee: 135,
+    languages: ['English'],
+    availableDays: ['Tue', 'Thu', 'Fri'],
+    availableTimeSlots: ['10:00 AM', '11:30 AM', '02:30 PM', '04:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Hayes has performed thousands of complex tumor resections using robotic-assisted and organ-conserving surgical methodologies.',
+    roomNumber: 'Cancer Institute, 3rd Floor, Suite 305',
+    specializationAreas: ['Robotic GI & Colorectal Surgery', 'Head & Neck Oncology', 'Sarcoma Resection', 'Thyroid Malignancies']
+  },
+
+  // Gastroenterology Doctors
+  {
+    id: 'doc-gastro-1',
+    name: 'Dr. Rajesh Nair',
+    title: 'Head of Digestive Diseases & Advanced Endoscopy',
+    departmentId: 'gastroenterology',
+    departmentName: 'Gastroenterology & Hepatology',
+    qualification: 'MD, DM (Gastroenterology), FASGE (USA)',
+    experienceYears: 21,
+    rating: 4.9,
+    reviewsCount: 395,
+    consultationFee: 115,
+    languages: ['English', 'Malayalam', 'Hindi'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Fri', 'Sat'],
+    availableTimeSlots: ['09:00 AM', '10:30 AM', '12:00 PM', '02:30 PM', '04:00 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Nair is an expert in therapeutic ERCP, endoscopic ultrasound (EUS), complex stricture stenting, and inflammatory bowel disease management.',
+    roomNumber: 'Endoscopy & GI Center, 1st Floor, Suite 110',
+    specializationAreas: ['Therapeutic ERCP & EUS', 'Ulcerative Colitis & Crohn’s', 'Chronic Liver Disease', 'Acid Reflux Interventions']
+  },
+  {
+    id: 'doc-gastro-2',
+    name: 'Dr. Hannah Zhao',
+    title: 'Consultant Hepatologist & Liver Transplant Physician',
+    departmentId: 'gastroenterology',
+    departmentName: 'Gastroenterology & Hepatology',
+    qualification: 'MD, Fellowship in Transplant Hepatology (UCSF)',
+    experienceYears: 13,
+    rating: 4.8,
+    reviewsCount: 180,
+    consultationFee: 110,
+    languages: ['English', 'Mandarin'],
+    availableDays: ['Mon', 'Wed', 'Thu', 'Sat'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '01:30 PM', '03:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dedicated to liver wellness, fatty liver disease reversal, viral hepatitis clearance, and pre/post-operative care for liver transplantation patients.',
+    roomNumber: 'Endoscopy & GI Center, 1st Floor, Suite 114',
+    specializationAreas: ['Fatty Liver & NAFLD', 'Cirrhosis Management', 'Hepatitis B & C', 'Liver Transplant Medicine']
+  },
+
+  // Obstetrics & Gynecology Doctors
+  {
+    id: 'doc-gyn-1',
+    name: 'Dr. Clara Thorne',
+    title: 'Head of Women’s Health & Maternal-Fetal Medicine',
+    departmentId: 'gynecology',
+    departmentName: 'Obstetrics & Gynecology',
+    qualification: 'MD, FACOG, Special Certification in High-Risk Obstetrics',
+    experienceYears: 20,
+    rating: 5.0,
+    reviewsCount: 560,
+    consultationFee: 115,
+    languages: ['English', 'Spanish'],
+    availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    availableTimeSlots: ['09:00 AM', '10:30 AM', '11:45 AM', '02:00 PM', '03:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1594824813571-638f02614d3f?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Thorne has delivered over 4,500 healthy babies with exceptional clinical outcomes. She specializes in twins, pregnancies with maternal medical conditions, and painless birth options.',
+    roomNumber: 'Women’s Pavilion, 2nd Floor, Room 250',
+    specializationAreas: ['High-Risk Pregnancy', 'Painless Delivery & LDRP', 'Fetal Ultrasound', 'Pre-eclampsia Care']
+  },
+  {
+    id: 'doc-gyn-2',
+    name: 'Dr. Meera Nambiar',
+    title: 'Consultant Laparoscopic Gynecological Surgeon',
+    departmentId: 'gynecology',
+    departmentName: 'Obstetrics & Gynecology',
+    qualification: 'MBBS, MS (OBG), Fellowship in Minimal Access Surgery',
+    experienceYears: 14,
+    rating: 4.9,
+    reviewsCount: 310,
+    consultationFee: 100,
+    languages: ['English', 'Tamil', 'Hindi'],
+    availableDays: ['Tue', 'Wed', 'Thu', 'Sat'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '01:30 PM', '03:00 PM', '04:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80',
+    bio: 'Specialist in keyhole surgeries for uterine fibroids, advanced endometriosis, ovarian cysts, and comprehensive fertility enhancement.',
+    roomNumber: 'Women’s Pavilion, 2nd Floor, Room 254',
+    specializationAreas: ['Keyhole Fibroid Removal', 'Endometriosis Excision', 'PCOS & Fertility Support', 'Hysteroscopy']
+  },
+
+  // Pulmonology Doctors
+  {
+    id: 'doc-pulmo-1',
+    name: 'Dr. Julian Bennett',
+    title: 'Director of Pulmonary & Critical Care Medicine',
+    departmentId: 'pulmonology',
+    departmentName: 'Pulmonology & Respiratory Care',
+    qualification: 'MD, FCCP, ATS Fellow',
+    experienceYears: 18,
+    rating: 4.9,
+    reviewsCount: 340,
+    consultationFee: 110,
+    languages: ['English'],
+    availableDays: ['Mon', 'Tue', 'Thu', 'Fri'],
+    availableTimeSlots: ['09:00 AM', '10:30 AM', '01:30 PM', '03:00 PM', '04:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Bennett is an authority in severe persistent asthma, COPD rehabilitation, interventional bronchoscopy, and intensive care management.',
+    roomNumber: 'Pulmonary Clinic, 1st Floor, Room 140',
+    specializationAreas: ['Difficult Asthma & Biologics', 'COPD & Emphysema', 'Interventional Pulmonology', 'Sleep Apnea (CPAP)']
+  },
+  {
+    id: 'doc-pulmo-2',
+    name: 'Dr. Tariq Mansoor',
+    title: 'Consultant Pulmonologist & Sleep Medicine Specialist',
+    departmentId: 'pulmonology',
+    departmentName: 'Pulmonology & Respiratory Care',
+    qualification: 'MBBS, MD (Respiratory Medicine), European Diploma in Adult Respiratory Medicine',
+    experienceYears: 12,
+    rating: 4.8,
+    reviewsCount: 195,
+    consultationFee: 95,
+    languages: ['English', 'Arabic'],
+    availableDays: ['Mon', 'Wed', 'Fri', 'Sat'],
+    availableTimeSlots: ['09:30 AM', '11:00 AM', '02:00 PM', '03:30 PM'],
+    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80',
+    bio: 'Dr. Mansoor heads the Gunshika Care Sleep Diagnostic Laboratory, specializing in snoring, daytime exhaustion, post-infection lung recovery, and occupational lung ailments.',
+    roomNumber: 'Pulmonary Clinic, 1st Floor, Room 144',
+    specializationAreas: ['Sleep Disorders', 'Lung Infections & Pneumonia', 'Smoking Cessation', 'Interstitial Lung Disease']
+  }
+];
+
+export const HOSPITAL_INFO = {
+  name: 'Gunshika Care',
+  tagline: 'World-Class Healthcare, Compassionate Heart',
+  emergencyPhone: '1800-GUNSHIKA-911',
+  ambulancePhone: '+1 (800) 923-2731',
+  generalInquiryPhone: '+1 (800) 923-2273',
+  email: 'care@gunshikacare.com',
+  address: '742 Healthcare Boulevard, Medical District, Metro City, MC 90210',
+  visitingHours: {
+    general: '10:00 AM - 12:00 PM & 04:30 PM - 07:30 PM',
+    icu: '11:00 AM - 12:00 PM & 05:00 PM - 06:00 PM',
+    emergency: '24 Hours / 7 Days Open'
+  },
+  stats: [
+    { label: 'Licensed Beds', value: '450+', subtext: 'Including 85 ICU & Critical Care' },
+    { label: 'Specialist Doctors', value: '120+', subtext: 'Board-certified physicians' },
+    { label: 'Surgeries Annually', value: '18,500+', subtext: 'With 99.2% success rate' },
+    { label: 'Patients Treated', value: '350,000+', subtext: 'From over 45 countries' }
+  ],
+  accreditations: [
+    { name: 'JCI Accredited', detail: 'Joint Commission International Gold Seal of Approval' },
+    { name: 'NABH Certified', detail: 'National Accreditation Board for Hospitals & Healthcare' },
+    { name: 'NABL Certified Labs', detail: 'National Accreditation for Pathology & Diagnostic Testing' },
+    { name: 'ISO 9001:2015', detail: 'International Standard for Quality Healthcare Management' }
+  ],
+  testimonials: [
+    {
+      id: 't-1',
+      patientName: 'Jonathan Vance',
+      age: 56,
+      department: 'Cardiology & Heart Center',
+      procedure: 'Emergency Coronary Angioplasty',
+      doctor: 'Dr. Evelyn Martinez',
+      quote: 'When I suffered sudden chest pain on a Sunday evening, the Gunshika Care trauma and cath lab team had me in the operating room in less than 35 minutes. Dr. Martinez and the nurses treated me like family. I am living proof of their speed and expertise.',
+      rating: 5,
+      date: 'August 2026'
+    },
+    {
+      id: 't-2',
+      patientName: 'Rebecca Sterling-Hall',
+      age: 42,
+      department: 'Orthopedics & Joint Care',
+      procedure: 'Robotic Knee Replacement',
+      doctor: 'Dr. Marcus Vance',
+      quote: 'I had been suffering with chronic knee arthritis for 6 years. Dr. Marcus Vance performed robotic surgery on Tuesday morning, and I was walking down the hallway with physical therapy the exact same evening. Life-changing care!',
+      rating: 5,
+      date: 'July 2026'
+    },
+    {
+      id: 't-3',
+      patientName: 'Maria & David Gomez',
+      age: 33,
+      department: 'Obstetrics & Gynecology',
+      procedure: 'High-Risk Twin Delivery',
+      doctor: 'Dr. Clara Thorne',
+      quote: 'Delivering our twin girls was nerve-wracking due to pre-eclampsia, but Dr. Clara Thorne and the Level III NICU team provided reassurance and surgical perfection every second. Both babies are thriving!',
+      rating: 5,
+      date: 'June 2026'
+    }
+  ],
+  leadership: [
+    {
+      name: 'Dr. Richard Sterling, MD, MHA',
+      role: 'Chief Executive Officer & Founder',
+      bio: 'Renowned healthcare administrator and former thoracic surgeon with 30+ years leading premier medical health systems.',
+      image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      name: 'Dr. Evelyn Martinez, MD, FACC',
+      role: 'Chief Medical Officer',
+      bio: 'Spearheading clinical governance, quality benchmarks, and advanced research protocols across all clinical institutes.',
+      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      name: 'Patricia Vance, MSN, RN',
+      role: 'Director of Patient Care & Nursing',
+      bio: 'Leading a team of 800+ dedicated registered nurses with emphasis on empathetic, zero-infection patient bedside practices.',
+      image: 'https://images.unsplash.com/photo-1594824813571-638f02614d3f?auto=format&fit=crop&w=400&q=80'
+    }
+  ]
+};

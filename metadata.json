@@ -1,0 +1,6 @@
+{
+  "name": "Gunshika Care",
+  "description": "Modern multi-specialty healthcare website for Gunshika Care Hospitals featuring comprehensive departments, specialist doctors directory, and seamless online appointment booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

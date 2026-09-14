@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Patient user profile with contact details and registration information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "fullName": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "format": "email", "maxLength": 120 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "fullName", "email", "createdAt"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Medical OPD consultation appointment booked with Gunshika Care",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "bookingReference": { "type": "string", "maxLength": 32 },
+        "patientName": { "type": "string", "maxLength": 100 },
+        "patientPhone": { "type": "string", "maxLength": 30 },
+        "patientEmail": { "type": "string", "format": "email", "maxLength": 120 },
+        "patientAge": { "type": "number" },
+        "patientGender": { "type": "string", "enum": ["male", "female", "other"] },
+        "isFirstVisit": { "type": "boolean" },
+        "departmentId": { "type": "string", "maxLength": 64 },
+        "departmentName": { "type": "string", "maxLength": 100 },
+        "doctorId": { "type": "string", "maxLength": 64 },
+        "doctorName": { "type": "string", "maxLength": 100 },
+        "doctorTitle": { "type": "string", "maxLength": 150 },
+        "visitType": { "type": "string", "enum": ["in-person", "video", "urgent"] },
+        "date": { "type": "string", "maxLength": 32 },
+        "timeSlot": { "type": "string", "maxLength": 32 },
+        "symptoms": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["confirmed", "cancelled", "completed"] },
+        "consultationFee": { "type": "number" },
+        "roomNumber": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": [
+        "id",
+        "userId",
+        "bookingReference",
+        "patientName",
+        "patientPhone",
+        "doctorId",
+        "date",
+        "timeSlot",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile records containing account information"
+    },
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Consultation appointments booked by patients"
+    }
+  }
+}
